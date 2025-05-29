@@ -1,0 +1,31 @@
+"""
+Luke Balducci
+Asks user how many dishes off of the menu and randomly selects the number promted by the user
+4/4/2025
+Challenges:
+Adds the prices together
+ensure user is entering a valid number
+generartes and adds cost of flairs as well
+"""
+
+
+import random                                                                                        # import random library
+mains =["A5 wagyu Frites","Chicken tenders","Lobster","Truffle Fettuccine Alfredo"]                  # list of main dishes 
+prices = [65,25,50,45]                                                                               # the prices parallel to the main dishes
+flairs =["with Steamed Broccoli","with Mashed Potato","with Truffle fries","with pigs in a blanket"] # list of side dishes 
+flair_prices =[8,10,12,10]                                                                           # prices that go with the side dishes
+
+while True:                                                 # forever loop
+    try:                                                    # attempt the following
+        items = int(input("How many items? "))              # prompts user to enter how many items they want
+    except ValueError:                                      # if the user fails to enter a number
+        print('Enter a number')                               
+        continue                                            # go back to the beginning of the loop
+    
+    for i in range(items):                                  # repeat 'items' number of times                                                 
+        main = random.choice(mains)                         # get a random main 
+        flair = random.choice(flairs)                       # get a random flair
+        main_price = prices[mains.index(main)]              # find the corresponding main price
+        flair_price = flair_prices[flairs.index(flair)]     # find the corresponding flair price
+        total_price = main_price + flair_price              # adding the prices
+        print(f'{main} {flair}, ${total_price}')            # printing all the info
